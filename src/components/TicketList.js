@@ -31,7 +31,7 @@ class TicketList extends React.Component {
 
             <div>
                 <h1>Tickets</h1>
-                <Link className="createTicket" to={`/createTicket`}>
+                <Link className="create-ticket" to={`/create-ticket`}>
                 <h2 >Create Ticket</h2>
                 </Link>
                 <div style={main}> 

@@ -7,6 +7,7 @@ import EventsList from "./components/EventsList"
 import TicketList from "./components/TicketList"
 import TicketDetails from "./components/TicketDetails"
 import CreateTicket from "./components/CreateTicket"
+import CreateEvent from "./components/CreateEvent"
 import './App.css';
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
         <Route exact path="/events" component={EventsList} />
         <Route exact path="/events/:id" component={TicketList} />
         <Route exact path="/tickets/:id" component={TicketDetails} />
-        <Route exact path="/createTicket" component={CreateTicket} />  
+        <Route exact path="/create-ticket" component={CreateTicket} />
+        <Route exact path="/create-event" component={CreateEvent} /> 
     </div>
   );
 }

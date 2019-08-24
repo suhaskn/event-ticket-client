@@ -1,6 +1,6 @@
-import { FETCH_ALL_EVENTS } from '../actions'
+import { FETCH_ALL_EVENTS, CREATE_EVENT } from '../actions'
 
-const initialState = { allEvents: [] }
+const initialState = { allEvents: [], addEvent: [] }
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
@@ -16,6 +16,11 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 allEvents: action.payload.filter(event => event.endDate >= exactDate)
+            }
+        case CREATE_EVENT:
+            return {
+                ...state,
+                addEvent: action.payload
             }
         default:
         return state

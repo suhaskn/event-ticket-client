@@ -38,6 +38,9 @@ class EventsList extends React.Component {
         return (
             <div>  
                 <h1>All events</h1>
+                <Link className="create-event" to={`/create-event`}>
+                <h2 >Create Event</h2>
+                </Link>  
                 <div style={main}> 
                     <div style={first}>   
                        <h2>Event name</h2>
@@ -51,7 +54,7 @@ class EventsList extends React.Component {
                     <div style={fourth}> 
                         <h2>End date</h2>
                     </div>
-                </div>            
+                </div>         
                 <ul className="event-list">
                     {allEvents.map(event => (
                         <Link className="event" key={event.id} to={`/events/${event.id}`}>
@@ -81,6 +84,8 @@ class EventsList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    
+    
     return {
         events: state.events
     }

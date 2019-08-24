@@ -11,16 +11,13 @@ class CreateTicket extends React.Component {
 
 	componentDidMount() {
 		const {jwt} = this.props
-		console.log('jwt',jwt)
-		console.log('this state:', this.state)
-			this.props.createTicketFun(this.state,jwt);
+		this.props.createTicketFun(this.state,jwt);
 	}
 
 	handleSubmit = (event) => {
-		console.log('event', event)
 				event.preventDefault()
 		    this.componentDidMount()
-    }
+  }
     
   handleChange = (event) => {
 		
@@ -31,13 +28,9 @@ class CreateTicket extends React.Component {
 		this.setState({
       eventId: parseInt(this.props.eventId)
 		})
-		console.log('this state in handle:', this.state)
-
 	}
 	
 	render() {
-		
-		const { eventId } = this.props;
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
@@ -58,11 +51,6 @@ class CreateTicket extends React.Component {
 						this.state.price || ''
 					} onChange={ this.handleChange } />
 				</div>
-
-				<input type="hidden" name="eventId" id="eventId" value={
-						eventId || ''
-					} onChange={ this.handleChange } />
-				<br/>
 
 			    <button type="submit">Save</button>
 			</form>

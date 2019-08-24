@@ -5,6 +5,7 @@ export const NEW_NAME = 'NEW_NAME'
 export const FETCH_ALL_EVENTS = 'FETCH_ALL_EVENTS'
 export const FETCH_ALL_TICKETS = 'FETCH_ALL_TICKETS'
 export const CREATE_TICKET = 'CREATE_TICKET'
+export const CREATE_EVENT = 'CREATE_EVENT'
 
 
 export function newName(payload) {
@@ -30,7 +31,6 @@ export function login(email, password) {
       .send({ email, password })
       .then(response => {
         const action = jwt(response.body);
-        console.log(response.body);
         dispatch(action);
       })
       .catch(error => {
@@ -66,18 +66,25 @@ export const fetchTicketsByEventId = (eventId) => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-
-
-export const createTicketFun = (event) => (dispatch) => {
-  // console.log('action')
-  // console.log('jwt',jwt)
-
-
+export const createTicketFun = (event,jwt) => (dispatch) => {
   request
     .post(`${url}/tickets`)
+    .set('authorization', `Bearer ${jwt}`)
     .send(event)
     .then(response => dispatch({
       type: CREATE_TICKET,
+      payload: response.body
+    }))
+    .catch(err => console.error(err))
+}
+
+export const createEventFun = (event,jwt) => (dispatch) => {
+  request
+    .post(`${url}/events`)
+    .set('authorization', `Bearer ${jwt}`)
+    .send(event)
+    .then(response => dispatch({
+      type: CREATE_EVENT,
       payload: response.body
     }))
     .catch(err => console.error(err))
